@@ -1,5 +1,8 @@
-import type { Metadata } from 'next';
+// app/layout.tsx
+
+import { ReactNode } from 'react';
 import { Inter, Great_Vibes } from 'next/font/google';
+import { Metadata } from 'next';
 import './globals.css';
 
 const inter = Inter({ 
@@ -15,6 +18,7 @@ const greatVibes = Great_Vibes({
   display: 'swap',
 });
 
+// Menyusun metadata tanpa themeColor di sini
 export const metadata: Metadata = {
   metadataBase: new URL('https://sweetlovebakery.com'), // Tambahkan metadataBase
   title: {
@@ -23,7 +27,6 @@ export const metadata: Metadata = {
   },
   description: 'Toko kue spesial dengan sentuhan romantis untuk setiap momen berharga',
   keywords: ['kue romantis', 'valentine cake', 'anniversary cake', 'toko kue spesial'],
-  themeColor: '#f43f5e',
   openGraph: {
     title: 'Sweet Love Bakery',
     description: 'Toko kue romantis untuk momen spesial',
@@ -63,6 +66,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={`${inter.variable} ${greatVibes.variable}`}>
+      <head>
+        {/* Menambahkan themeColor dalam tag meta di head */}
+        <meta name="theme-color" content="#f43f5e" />
+      </head>
       <body className="font-sans bg-rose-50 text-rose-900 antialiased min-h-screen flex flex-col">
         {children}
         

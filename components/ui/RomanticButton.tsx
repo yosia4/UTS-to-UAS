@@ -1,6 +1,6 @@
-'use client';
+'use client'; // Menambahkan 'use client' untuk memastikan komponen hanya di-render di klien
 
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaHeart, FaArrowRight, FaShoppingCart } from 'react-icons/fa';
 
@@ -13,6 +13,7 @@ interface RomanticButtonProps {
   fullWidth?: boolean;
   className?: string;
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export default function RomanticButton({
@@ -24,11 +25,21 @@ export default function RomanticButton({
   fullWidth = false,
   className = '',
   onClick,
+  type = 'button',
 }: RomanticButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [isClient, setIsClient] = useState(false); // State untuk memastikan komponen hanya dirender di klien
 
-  // Variants configuration
+  // useEffect to ensure we only run on the client side
+  useEffect(() => {
+    setIsClient(true); // This ensures the component is rendered on the client side only
+  }, []);
+
+  if (!isClient) {
+    return null; // Prevent rendering during SSR
+  }
+
   const variants = {
     primary: 'bg-gradient-to-r from-rose-500 to-pink-600 text-white shadow-lg shadow-rose-200',
     secondary: 'bg-pink-100 text-rose-700 border border-pink-200',
@@ -88,6 +99,7 @@ export default function RomanticButton({
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onClick={handleClick}
+      type={type}
       className={`
         rounded-full font-medium flex items-center justify-center transition-all
         ${variants[variant]}

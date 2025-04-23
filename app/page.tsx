@@ -1,10 +1,12 @@
+'use client'; // Menandakan bahwa komponen ini adalah komponen sisi klien
+
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Link from 'next/link'; // Import Link dari Next.js
+import Link from 'next/link';
 
-// Impor SpecialOfferBanner tanpa ssr: false karena sudah menjadi Client Component
-const SpecialOfferBanner = dynamic(() => import('@/components/main/SpecialOfferBanner'));
+// Impor komponen tanpa SSR (Client Component)
+const SpecialOfferBanner = dynamic(() => import('@/components/main/SpecialOfferBanner'), { ssr: false });
 
-// Komponen lainnya
 import RomanticNavbar from '@/components/main/RomanticNavbar';
 import ProductCard from '@/components/main/ProductCard';
 import HeartFooter from '@/components/main/HeartFooter';
@@ -13,21 +15,30 @@ import { getFeaturedProducts, getTestimonials } from '@/lib/products';
 import RomanticButton from '@/components/ui/RomanticButton';
 import { FaHeart, FaArrowRight } from 'react-icons/fa';
 
-// Komponen halaman utama
 const HomePage: React.FC = () => {
+  const [isClient, setIsClient] = useState(false); // Untuk memeriksa apakah ini di klien
+
+  // Gunakan useEffect untuk menunggu hingga komponen selesai dimuat di klien
+  useEffect(() => {
+    setIsClient(true); // Set setelah komponen dimuat di klien
+  }, []);
+
   const featuredProducts = getFeaturedProducts();
   const testimonials = getTestimonials();
+
+  if (!isClient) {
+    return null; // Mencegah rendering di server
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
       <RomanticNavbar />
-      
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative h-[80vh] min-h-[500px] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-rose-500 to-pink-600 opacity-90"></div>
           <div className="absolute inset-0 bg-[url('/images/heart-pattern.svg')] bg-repeat opacity-10"></div>
-          
+
           <div className="relative h-full container mx-auto px-4 flex items-center justify-center">
             <div className="text-center max-w-3xl">
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-romantic">
@@ -37,15 +48,13 @@ const HomePage: React.FC = () => {
                 Setiap gigitan adalah cerita cinta yang manis
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                {/* Tombol Lihat Koleksi */}
-                <Link href="/main/products">  {/* Pastikan path sesuai */}
+                <Link href="/main/products">
                   <RomanticButton size="lg" icon="heart" animate="heartbeat">
                     Lihat Koleksi
                   </RomanticButton>
                 </Link>
 
-                {/* Tombol Kisah Kami */}
-                <Link href="/main/about">  {/* Pastikan path sesuai */}
+                <Link href="/main/about">
                   <RomanticButton variant="outline" size="lg" icon="arrow">
                     Kisah Kami
                   </RomanticButton>
@@ -72,7 +81,7 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/main/products">  {/* Pastikan path sesuai */}
+            <Link href="/main/products">
               <RomanticButton href="/main/products" size="lg" icon="arrow" animate="float">
                 Lihat Semua Produk
               </RomanticButton>
@@ -104,12 +113,12 @@ const HomePage: React.FC = () => {
               Pesan kue romantis Anda hari ini dan buat kenangan manis yang tak terlupakan
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/main/products">  {/* Pastikan path sesuai */}
+              <Link href="/main/products">
                 <RomanticButton size="lg" variant="outline" icon="heart">
                   Pesan Sekarang
                 </RomanticButton>
               </Link>
-              <Link href="/main/contact">  {/* Pastikan path sesuai */}
+              <Link href="/main/contact">
                 <RomanticButton size="lg" variant="secondary" icon="arrow">
                   Konsultasi Desain
                 </RomanticButton>
