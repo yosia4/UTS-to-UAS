@@ -41,7 +41,9 @@ export default function ForgotPasswordPage() {
           />
 
           <div>
-            <RomanticButton type="submit" text="Reset Password" fullWidth />
+            <RomanticButton type="submit" fullWidth>
+              Reset Password
+            </RomanticButton>
           </div>
         </form>
 
