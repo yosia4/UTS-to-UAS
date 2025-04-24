@@ -92,7 +92,9 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <RomanticButton type="submit" text="Sign In" fullWidth />
+            <RomanticButton type="submit" fullWidth>
+              Reset Password
+            </RomanticButton>
           </div>
         </form>
 
