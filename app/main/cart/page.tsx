@@ -103,9 +103,9 @@ export default function CartPage() {
                     <p className="text-lg font-bold text-rose-600">Rp {total.toFixed(2)}</p>
                   </div>
                 </div>
-                
-                <RomanticButton text="Proceed to Checkout" fullWidth />
-                
+                <RomanticButton fullWidth>
+                  Proceed to Checkout
+                </RomanticButton>
                 <div className="mt-4 text-center">
                   <p className="text-sm text-rose-500">or</p>
                   <a 
