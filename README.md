@@ -10,7 +10,7 @@ Link GitHub:
 https://github.com/BD235/Project_SIWEB_25.git
 
 Link Deploy:
-https://project-siweb-25-git-main-bd235s-projects.vercel.app/
+https://project-siweb-25-tag7.vercel.app/
 
 Bagian yang sudah dikerjakan tiap anggota:
 1. Yosia Agnesa Togatorop - 231712616
