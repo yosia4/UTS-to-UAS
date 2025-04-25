@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
 
           <div className="text-center mt-12">
             <Link href="/main/products">
-              <RomanticButton href="/main/products" size="lg" icon="arrow" animate="float">
+              <RomanticButton size="lg" icon="arrow" animate="float">
                 Lihat Semua Produk
               </RomanticButton>
             </Link>
