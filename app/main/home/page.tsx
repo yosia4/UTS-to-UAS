@@ -72,8 +72,8 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/main/products">  {/* Pastikan path sesuai */}
-              <RomanticButton href="/main/products" size="lg" icon="arrow" animate="float">
+            <Link href="/main/products">
+              <RomanticButton size="lg" icon="arrow" animate="float">
                 Lihat Semua Produk
               </RomanticButton>
             </Link>
