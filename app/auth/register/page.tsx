@@ -120,7 +120,9 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <RomanticButton type="submit" text="Register" fullWidth />
+            <RomanticButton type="submit" fullWidth>
+              Reset Password
+            </RomanticButton>
           </div>
         </form>
 
