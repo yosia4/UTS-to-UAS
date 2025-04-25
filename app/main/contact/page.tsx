@@ -87,7 +87,9 @@ export default function ContactPage() {
                       placeholder="Tulis pesan manis Anda di sini..."
                     ></textarea>
                   </div>
-                  <RomanticButton text="Kirim Pesan" />
+                  <RomanticButton>
+                    Kirim Pesan
+                  </RomanticButton>
                 </form>
               </div>
             </div>
