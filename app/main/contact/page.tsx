@@ -56,7 +56,7 @@ export default function ContactPage() {
                     </li>
                     <li className="flex justify-between">
                       <span>Sabtu</span>
-                      <span>10:00 AM - 04:00 PM</span>
+                      <span>10:0 AM - 04:00 PM</span>
                     </li>
                     <li className="flex justify-between">
                       <span>Minggu</span>

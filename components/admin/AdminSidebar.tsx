@@ -49,6 +49,14 @@ export default function AdminSidebar() {
               >
                 <FaShoppingCart className={`mr-3 flex-shrink-0 ${isActive('orders') ? 'text-white' : 'text-rose-300'}`} />
                 Orders
+                </Link>
+             
+              <Link
+                href="/admin/transaksi"
+                className={`group flex items-center px-2 py-2 text-sm font-medium rounded-md ${isActive('transaksi') ? 'bg-rose-900 text-white' : 'text-rose-200 hover:bg-rose-700 hover:text-white'}`}
+              >
+                <FaUsers className={`mr-3 flex-shrink-0 ${isActive('transaksi') ? 'text-white' : 'text-rose-300'}`} />
+                Transaksi
               </Link>
             </nav>
           </div>
